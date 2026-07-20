@@ -366,9 +366,12 @@ footer p {
 @media screen and (orientation: landscape) {
   .ios-fullscreen .game-frame-container {
     width: 100vw !important;
-    height: 100vh !important;
-    top: 0 !important;
-    left: 0 !important;
+    height: 56.25vw !important; /* 100vw * 9/16 */
+    max-height: 100vh !important;
+    max-width: 177.77vh !important; /* 100vh * 16/9 */
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
   }
 }
 
@@ -376,11 +379,13 @@ footer p {
 @media screen and (orientation: portrait) {
   .ios-fullscreen .game-frame-container {
     width: 100vh !important;
-    height: 100vw !important;
-    transform: rotate(90deg) !important;
-    transform-origin: left top !important;
-    top: 0 !important;
-    left: 100vw !important;
+    height: 56.25vh !important; /* 100vh * 9/16 */
+    max-height: 100vw !important;
+    max-width: 177.77vw !important; /* 100vw * 16/9 */
+    transform: translate(-50%, -50%) rotate(90deg) !important;
+    transform-origin: center center !important;
+    top: 50% !important;
+    left: 50% !important;
   }
 }
 
