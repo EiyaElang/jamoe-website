@@ -55,9 +55,9 @@
       var loaderUrl = buildUrl + "/Jamu_WebGL_Build.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/Jamu_WebGL_Build.data.br",
-        frameworkUrl: buildUrl + "/Jamu_WebGL_Build.framework.js.br",
-        codeUrl: buildUrl + "/Jamu_WebGL_Build.wasm.br",
+        dataUrl: buildUrl + "/Jamu_WebGL_Build.data",
+        frameworkUrl: buildUrl + "/Jamu_WebGL_Build.framework.js",
+        codeUrl: buildUrl + "/Jamu_WebGL_Build.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Jamoe",
@@ -116,6 +116,7 @@
         createUnityInstance(canvas, config, (progress) => {
           document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
               }).then((unityInstance) => {
+                window.unityInstance = unityInstance; // EXPORT KE PARENT
                 document.querySelector("#unity-loading-bar").style.display = "none";
                 document.querySelector("#unity-fullscreen-button").onclick = () => {
                   unityInstance.SetFullscreen(1);
