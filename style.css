@@ -343,34 +343,69 @@ footer p {
   left: 0 !important;
   width: 100vw !important;
   height: 100vh !important;
-  max-width: none !important;
   z-index: 99999 !important;
   background-color: #000 !important;
   margin: 0 !important;
   padding: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-}
-
-.ios-fullscreen .game-frame-container {
-  border-radius: 0 !important;
-  border: none !important;
-  height: 100% !important;
-  box-shadow: none !important;
-  max-width: none !important;
+  overflow: hidden !important;
 }
 
 .ios-fullscreen .game-frame-glow {
   display: none !important;
 }
 
-.ios-fullscreen .game-controls {
+.ios-fullscreen .game-frame-container {
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  max-width: none !important;
   position: absolute !important;
-  bottom: 20px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  background: rgba(0, 0, 0, 0.5) !important;
-  padding: 10px !important;
-  border-radius: 8px !important;
+}
+
+/* Default (Landscape held) */
+@media screen and (orientation: landscape) {
+  .ios-fullscreen .game-frame-container {
+    width: 100vw !important;
+    height: 100vh !important;
+    top: 0 !important;
+    left: 0 !important;
+  }
+}
+
+/* Portrait held -> Force Landscape Rotation */
+@media screen and (orientation: portrait) {
+  .ios-fullscreen .game-frame-container {
+    width: 100vh !important;
+    height: 100vw !important;
+    transform: rotate(90deg) !important;
+    transform-origin: left top !important;
+    top: 0 !important;
+    left: 100vw !important;
+  }
+}
+
+/* Small discrete close button */
+.ios-fullscreen .game-controls {
+  position: fixed !important;
+  top: 16px !important;
+  right: 16px !important;
+  bottom: auto !important;
+  left: auto !important;
+  transform: none !important;
+  z-index: 100000 !important;
+  margin: 0 !important;
+}
+
+.close-btn {
+  background: rgba(0, 0, 0, 0.6) !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+  color: #fff !important;
+  border-radius: 50% !important;
+  width: 44px !important;
+  height: 44px !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0 !important; /* Hide text */
 }
