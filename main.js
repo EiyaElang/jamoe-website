@@ -3,17 +3,28 @@ const fullscreenBtn = document.getElementById('fullscreen-btn');
 const iframe = document.getElementById('unity-iframe');
 
 if (fullscreenBtn && iframe) {
+  const gameWrapper = document.querySelector('.game-container-wrapper');
+  let isIOSFullscreen = false;
+
   fullscreenBtn.addEventListener('click', () => {
+    // If already in iOS fallback fullscreen, exit it
+    if (isIOSFullscreen) {
+      gameWrapper.classList.remove('ios-fullscreen');
+      fullscreenBtn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg> Fullscreen Mode`;
+      isIOSFullscreen = false;
+      return;
+    }
+
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
     // Try to trigger Unity's internal fullscreen first
     try {
-      if (iframe.contentWindow && iframe.contentWindow.unityInstance) {
+      if (!isIOS && iframe.contentWindow && iframe.contentWindow.unityInstance) {
         iframe.contentWindow.unityInstance.SetFullscreen(1);
         
         // Attempt to force landscape orientation on mobile
         if (screen.orientation && screen.orientation.lock) {
-          screen.orientation.lock('landscape').catch((e) => {
-            console.log("Orientation lock not supported or denied.", e);
-          });
+          screen.orientation.lock('landscape').catch(() => {});
         }
         return; // Unity will handle the fullscreen natively
       }
@@ -22,14 +33,20 @@ if (fullscreenBtn && iframe) {
     }
     
     // Fallback if Unity instance is not ready or cross-origin block
-    if (iframe.requestFullscreen) {
+    if (!isIOS && iframe.requestFullscreen) {
       iframe.requestFullscreen();
-    } else if (iframe.mozRequestFullScreen) { /* Firefox */
-      iframe.mozRequestFullScreen();
-    } else if (iframe.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+    } else if (!isIOS && iframe.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
       iframe.webkitRequestFullscreen();
-    } else if (iframe.msRequestFullscreen) { /* IE/Edge */
-      iframe.msRequestFullscreen();
+    } else {
+      // iOS Safari Fallback (CSS Fullscreen)
+      gameWrapper.classList.add('ios-fullscreen');
+      fullscreenBtn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"></path></svg> Exit Fullscreen`;
+      isIOSFullscreen = true;
+      
+      // Prompt user to rotate device manually since iOS doesn't support lock
+      if (window.innerHeight > window.innerWidth) {
+        // Just a subtle visual cue could go here, but usually users rotate automatically
+      }
     }
 
     // Fallback orientation lock

@@ -335,3 +335,42 @@ footer p {
     padding: 30px 20px;
   }
 }
+
+/* --- iOS Fallback Fullscreen --- */
+.ios-fullscreen {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: none !important;
+  z-index: 99999 !important;
+  background-color: #000 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+.ios-fullscreen .game-frame-container {
+  border-radius: 0 !important;
+  border: none !important;
+  height: 100% !important;
+  box-shadow: none !important;
+  max-width: none !important;
+}
+
+.ios-fullscreen .game-frame-glow {
+  display: none !important;
+}
+
+.ios-fullscreen .game-controls {
+  position: absolute !important;
+  bottom: 20px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  padding: 10px !important;
+  border-radius: 8px !important;
+}
