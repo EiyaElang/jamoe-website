@@ -1,25 +1,17 @@
 {
   "headers": [
     {
-      "source": "/game/Build/(.*\\.data\\.br)",
+      "source": "/game/Build/(.*\\.br)",
       "headers": [
         {
           "key": "Content-Encoding",
           "value": "br"
-        },
-        {
-          "key": "Content-Type",
-          "value": "application/octet-stream"
         }
       ]
     },
     {
       "source": "/game/Build/(.*\\.wasm\\.br)",
       "headers": [
-        {
-          "key": "Content-Encoding",
-          "value": "br"
-        },
         {
           "key": "Content-Type",
           "value": "application/wasm"
@@ -30,12 +22,17 @@
       "source": "/game/Build/(.*\\.js\\.br)",
       "headers": [
         {
-          "key": "Content-Encoding",
-          "value": "br"
-        },
-        {
           "key": "Content-Type",
           "value": "application/javascript"
+        }
+      ]
+    },
+    {
+      "source": "/game/Build/(.*\\.data\\.br)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/octet-stream"
         }
       ]
     }
