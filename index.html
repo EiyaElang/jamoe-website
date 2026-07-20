@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jamoe Game - Pelestarian Kearifan Lokal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <!-- Navbar / Header -->
+    <header class="navbar">
+      <div class="container">
+        <h1 class="logo">Jamoe<span>.</span></h1>
+        <nav>
+          <a href="#game" class="nav-link">Play Game</a>
+          <a href="#about" class="nav-link">About Research</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero container">
+      <h2 class="hero-title">Jamoe Game</h2>
+      <p class="hero-subtitle">Penelitian Pengembangan Game Pembelajaran Pembuatan Jamu dengan Kearifan Lokal</p>
+      <a href="#game" class="btn-primary">Mainkan Sekarang</a>
+    </section>
+
+    <!-- Game Section -->
+    <section id="game" class="game-section">
+      <div class="container game-container-wrapper">
+        <div class="game-frame-glow"></div>
+        <div class="game-frame-container" id="game-frame-container">
+          <iframe id="unity-iframe" src="/game/index.html" frameborder="0" scrolling="no"></iframe>
+        </div>
+        <div class="game-controls">
+          <button id="fullscreen-btn" class="btn-secondary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+            Fullscreen Mode
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section container">
+      <div class="about-card">
+        <h3 class="section-title">Tentang Penelitian</h3>
+        
+        <div class="about-content">
+          <div class="about-text">
+            <h4>Latar Belakang</h4>
+            <p>Seiring arus modernisasi, pengetahuan empiris mengenai komposisi dan manfaat rimpang tradisional semakin terkikis di kalangan generasi muda (digital native). Generasi modern kehilangan akses langsung untuk mengamati dan mempraktikkan ritme kewirausahaan dan teknik peracikan warisan leluhur tersebut.</p>
+            
+            <h4>Solusi Inovatif</h4>
+            <p>Gim "Jamoe" hadir sebagai lingkungan pembelajaran simulatif tanpa risiko (<strong>risk-free environment</strong>). Menggunakan genre <em>time-management</em> dengan mekanika <strong>drag-and-drop</strong>, game ini memungkinkan pemain melakukan proses trial and error—mulai dari presisi penakaran komposisi hingga manajemen waktu pelayanan—tanpa menanggung kerugian finansial di dunia nyata.</p>
+            
+            <h4>Metodologi & Teknologi</h4>
+            <p>Pengembangan menggunakan <strong>Game Development Life Cycle (GDLC)</strong> dengan teknologi <strong>Unity Game Engine</strong> dan diekspor ke platform <strong>WebGL</strong>. Pilihan arsitektur ini menghapus hambatan instalasi (<em>zero-installation barrier</em>), sehingga siapapun dapat bermain dan belajar melestarikan budaya secara instan langsung dari peramban web mereka.</p>
+          </div>
+          
+          <div class="about-author">
+            <div class="author-badge">
+              <span class="author-label">Peneliti</span>
+              <h5 class="author-name">I Gede Elang Perdana Dwi Putra</h5>
+              <p class="author-univ">Teknologi Informasi, Universitas Pendidikan Nasional (UNDIKNAS) Denpasar</p>
+              <p class="author-year">2026</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>&copy; 2026 I Gede Elang Perdana Dwi Putra - UNDIKNAS Denpasar.</p>
+        <p class="footer-note">Pengembangan Gim Peracikan Jamu sebagai Media Edukasi dan Pelestarian Kearifan Lokal Berbasis WebGL.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
